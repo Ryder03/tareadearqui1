@@ -1,5 +1,5 @@
-django-ribbit
-=============
+Tarea de arquitectura (Django-ribbit)
+=====================================
 
 Ribbit - A Twitter Clone made using Django
 
