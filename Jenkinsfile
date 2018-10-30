@@ -17,24 +17,14 @@ pipeline {
 
        stage ('Deploy') {
             steps {
-              echo 'deploy'
+              sh '''
+                heroku container:login
+                docker build -t registry.heroku.com/vamosquesepuede/web .
+                docker push registry.heroku.com/vamosquesepuede/web
+                heroku container:release web -a vamosquesepuede
+                heroku open -a vamosquesepuede
+              '''
             }
-            steps {
-              sh 'heroku container:login'
-            }
-            steps {
-              sh 'docker build -t registry.heroku.com/vamosquesepuede/web .'
-            }
-            steps {
-              sh 'docker push registry.heroku.com/vamosquesepuede/web'
-            }
-            steps {
-              sh 'heroku container:release web -a vamosquesepuede'
-            }
-            steps {
-              sh 'heroku open -a vamosquesepuede'
-            }
-
        }
 
     }
