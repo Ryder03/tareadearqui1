@@ -9,12 +9,11 @@ A live demo of the app can be found at https://vamosquesepuede.herokuapp.com/
 
 To set the application locally, first clone the repo
 
-git clone https://github.com/Ryder03/tareadearqui1.git
+  git clone https://github.com/Ryder03/tareadearqui1.git
+
 ```  
 Original
-```  
-```  
-git clone https://github.com/gnarula/django-ribbit.git
+  git clone https://github.com/gnarula/django-ribbit.git
 ```
 
 Make a virtual environment
