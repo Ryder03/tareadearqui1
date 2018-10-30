@@ -12,13 +12,14 @@ RUN apt-get -y install curl
 RUN pip install gunicorn
 RUN curl https://cli-assets.heroku.com/install.sh | sh
 RUN mkdir Tarea1
-RUN cd Tarea1/ && git clone https://github.com/Ryder03/tareadearqui1.git && virtualenv --no-site-packages ribbit_env
+RUN cd Tarea1/ && git clone https://github.com/gnarula/django-ribbit.git && virtualenv --no-site-packages ribbit_env
 RUN bash -c "source Tarea1/ribbit_env/bin/activate" 
-RUN pip install Django==1.6 South
+RUN pip install Django==1.6 South 
 RUN pip install django-heroku
+RUN cd ..
 RUN cd Tarea1/django-ribbit/ && python manage.py syncdb --noinput
 RUN cd Tarea1/django-ribbit/ && python manage.py migrate ribbit_app
-RUN touch Tarea1/django-ribbit/Procfile && echo "web: gunicorn django-ribbit.wsgi --log-file -"
+RUN touch Tarea1/django-ribbit/Procfile && echo "web: gunicorn ribbit.wsgi --log-file -"
 
 
 EXPOSE 8000
