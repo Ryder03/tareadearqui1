@@ -1,10 +1,9 @@
-django('django') {
-    
-    currentBuild.result = "SUCCESS"
+pipeline {
+    agent any
 
-    try {
+    stages {
 
-       stage('Clone sources') {
+       stage ('Clone sources') {
           git 'https://github.com/Ryder03/tareadearqui1.git'
        }
 
@@ -14,10 +13,9 @@ django('django') {
             }
         }
 
-       stage('Deploy'){
+       stage ('Deploy') {
 
          echo 'deploy'
-
          sh 'heroku container:login'
          sh 'docker build -t registry.heroku.com/vamosquesepuede/web .'
          sh 'docker push registry.heroku.com/vamosquesepuede/web'
@@ -27,14 +25,4 @@ django('django') {
        }
 
     }
-
-    catch (err) {
-
-        currentBuild.result = "FAILURE"
-
-        echo 'Build or Deploy failure'
-       
-        throw err
-    }
-
 }
