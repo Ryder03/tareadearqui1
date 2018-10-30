@@ -1,5 +1,8 @@
-pipeline {
-    agent any
+django('django') {
+    
+    currentBuild.result = "SUCCESS"
+
+    try {
 
        stage('Clone sources') {
           git 'https://github.com/Ryder03/tareadearqui1.git'
@@ -22,4 +25,16 @@ pipeline {
          sh 'heroku open -a vamosquesepuede'
 
        }
+
+    }
+
+    catch (err) {
+
+        currentBuild.result = "FAILURE"
+
+        echo 'Build or Deploy failure'
+       
+        throw err
+    }
+
 }
