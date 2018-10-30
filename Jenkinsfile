@@ -4,7 +4,9 @@ pipeline {
     stages {
 
        stage ('Clone sources') {
-          git 'https://github.com/Ryder03/tareadearqui1.git'
+            steps {
+              git 'https://github.com/Ryder03/tareadearqui1.git'
+            }
        }
 
         stage ('Build') {
@@ -14,13 +16,24 @@ pipeline {
         }
 
        stage ('Deploy') {
-
-         echo 'deploy'
-         sh 'heroku container:login'
-         sh 'docker build -t registry.heroku.com/vamosquesepuede/web .'
-         sh 'docker push registry.heroku.com/vamosquesepuede/web'
-         sh 'heroku container:release web -a vamosquesepuede'
-         sh 'heroku open -a vamosquesepuede'
+            steps {
+              echo 'deploy'
+            }
+            steps {
+              sh 'heroku container:login'
+            }
+            steps {
+              sh 'docker build -t registry.heroku.com/vamosquesepuede/web .'
+            }
+            steps {
+              sh 'docker push registry.heroku.com/vamosquesepuede/web'
+            }
+            steps {
+              sh 'heroku container:release web -a vamosquesepuede'
+            }
+            steps {
+              sh 'heroku open -a vamosquesepuede'
+            }
 
        }
 
