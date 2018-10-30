@@ -19,8 +19,6 @@ RUN pip install django-heroku
 RUN cd ..
 RUN cd Tarea1/django-ribbit/ && python manage.py syncdb --noinput
 RUN cd Tarea1/django-ribbit/ && python manage.py migrate ribbit_app
-RUN touch Tarea1/django-ribbit/Procfile && echo "web: gunicorn ribbit.wsgi:application --log-file -"
+RUN touch Tarea1/django-ribbit/Procfile && echo "web: gunicorn ribbit.wsgi.py --log-file -"
 
-
-EXPOSE 8000
-CMD python Tarea1/django-ribbit/manage.py runserver 0.0.0.0:8000
+CMD python Tarea1/django-ribbit/manage.py runserver 0.0.0.0:$PORT
