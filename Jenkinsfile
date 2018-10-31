@@ -18,11 +18,11 @@ pipeline {
        stage ('Deploy') {
             steps {
               sh '''
-                heroku container:login
-                docker build -t registry.heroku.com/vamosquesepuede/web .
-                docker push registry.heroku.com/vamosquesepuede/web
-                heroku container:release web -a vamosquesepuede
-                heroku open -a vamosquesepuede
+                git init
+                heroku git:remote -a tareadearquitectura
+                git add .
+                git commit -am "make it better"
+                git push heroku master
               '''
             }
        }
