@@ -19,7 +19,6 @@ pipeline {
             steps {
               sh '''
                 heroku login
-                docker login
                 heroku container:login
                 docker build -t registry.heroku.com/tareadearquitectura/web .
                 docker push registry.heroku.com/tareadearquitectura/web
