@@ -21,11 +21,12 @@ pipeline {
             steps {
               sh '''
                 heroku login
+                docker login
                 heroku container:login
-                docker build -t registry.heroku.com/tareadearquitectura/web .
-                docker push registry.heroku.com/tareadearquitectura/web
-                heroku container:release web -a tareadearquitectura
-                heroku open -a tareadearquitectura
+                docker build -t registry.heroku.com/vamosquesepuede/web .
+                docker push registry.heroku.com/vamosquesepuede/web
+                heroku container:release web -a vamosquesepuede
+                heroku open -a vamosquesepuede
               '''
             }
        }
